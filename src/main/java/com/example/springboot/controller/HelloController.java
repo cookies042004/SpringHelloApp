@@ -1,13 +1,16 @@
 package com.example.springboot.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.springboot.dto.UserDTO;
 
 @RestController
 public class HelloController {
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "Hello from BridgeLabz";
+    @PostMapping("/hello/post")
+    public String sayHello(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz";
     }
 }
